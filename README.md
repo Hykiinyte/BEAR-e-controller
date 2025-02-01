@@ -10,7 +10,7 @@ Below are the instructions for Python, ROBOrio and deployment, and the to do lis
 ----------------------------------------------------------------------------------------------------------------------
 
 # Instructions
-The Github repository is structured where "Main.py" is the main handler, the LabVIEW equivalent of "Robot Main.vi". In "subsystems" there are files like "teleop.py" for TeleOperated mode and "auto.py" for autonomous mode. The "constants" folder is for constant values held and shared. Changing may break code or something. Please organize accordingly, as my expierence with being a game developer- FILE ORGANIZATION HELPS MAN so yeah you do you just don't break shit.
+The Github repository is structured where "Main.py" is the main handler, the LabVIEW equivalent of "Robot Main.vi". In "commands" there are files like "teleop.py" for TeleOperated mode and "auto.py" for autonomous mode. The "constants" folder is for constant values held and shared. Changing may break code or something. Please organize accordingly, as my expierence with being a game developer- FILE ORGANIZATION HELPS MAN so yeah you do you just don't break shit.
 
 If RobotPy is not working on your computer or on this web, please open (the) Terminal and type the following:
 

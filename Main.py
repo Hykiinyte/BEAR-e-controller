@@ -6,12 +6,12 @@
 #pip install robotpy-pathplanner
 
 import wpilib
-from subsystems.drivetrain import Drivetrain  # Import drivetrain subsystem
+from subsystems.drivetrain import Drivetrain  #Import drivetrain subsystem
 
 class MyRobot(wpilib.TimedRobot):
     def robotInit(self):
         """Runs once when the robot starts up."""
-        self.drivetrain = Drivetrain()  # Initialize subsystems
+        self.drivetrain = Drivetrain()  #Initialize subsystems
 
     def autonomousInit(self):
         """Runs once when autonomous mode starts."""
@@ -19,7 +19,7 @@ class MyRobot(wpilib.TimedRobot):
 
     def autonomousPeriodic(self):
         """Runs repeatedly during autonomous."""
-        self.drivetrain.drive(0.5, 0, 0)  # Move forward at half speed
+        self.drivetrain.drive(0.5, 0, 0)  #Move forward half speed
 
     def teleopInit(self):
         """Runs once when teleop starts."""

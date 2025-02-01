@@ -10,36 +10,31 @@ Below are the instructions for Python, ROBOrio and deployment, and the to do lis
 # Instructions
 If RobotPy is not working on your computer or on this web, please open (the) Terminal and type the following:
 
-pip install robotpy
+- pip install robotpy
+- pip install robotpy-rev
+- pip install robotpy-ctre
+- pip install robotpy-navx
+- pip install robotpy-pathplanner
 
-pip install robotpy-rev
+If still not working, you may need to import the WPI Library. Be sure to include this in your code:
 
-pip install robotpy-ctre
-
-pip install robotpy-navx
-
-pip install robotpy-pathplanner
+- import wpilib
 
 ----------------------------------------------------------------------------------------------------------------------
 
 To deploy to ROBOrio, do the following:
-- Install RobotPy on the ROBOrio
-  
-py -3 -m robotpy_installer download robotpy
+Install RobotPy on the ROBOrio
+- py -3 -m robotpy_installer download robotpy
+- py -3 -m robotpy_installer install robotpy
 
-py -3 -m robotpy_installer install robotpy
+Deploy the code
+- py -3 -m robotpy deploy
 
-- Deploy the code
-  
-py -3 -m robotpy deploy
+Additionally, you can simulate the robot:
+- py -3 -m robotpy sim
 
-- Additionally, you can simulate
-
-py -3 -m robotpy sim
-
-- As well as add Telemetry data for debugging and output reading
-
-wpilib.SmartDashboard.putNumber("Joystick Y", y_speed)
+As well as add Telemetry data for debugging and output reading
+- wpilib.SmartDashboard.putNumber("Joystick Y", y_speed)
 
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -57,5 +52,6 @@ Create a basic drivetrain.
 Utilities
 - Sensors/Camera if needed
 - Objective Mechanism control
+- Driver Station Utilities
 
 Refer to Dhillan for more instructions if not here.

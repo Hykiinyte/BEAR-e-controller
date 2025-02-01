@@ -12,6 +12,6 @@ class Autonomous:
     def update(self):
         """Example auto routine: Drive forward for 3 seconds"""
         if self.timer.get() < 3.0:
-            self.drivetrain.drive_cartesian(0.5, 0, 0)  # Move forward
+            self.drivetrain.drive_cartesian(0.5, 0, 0)  #move forward a bit
         else:
-            self.drivetrain.drive_cartesian(0, 0, 0)  # Stop
+            self.drivetrain.drive_cartesian(0, 0, 0)  #stop

@@ -10,8 +10,8 @@ class Autonomous:
         self.timer.start()
 
     def update(self):
+        """Example auto routine: Drive forward for 3 seconds"""
         if self.timer.get() < 3.0:
-            self.drivetrain.drive_cartesian(0.5, 0, 0)  #move forward a bit
+            self.drivetrain.drive_cartesian(0.5, 0, 0)  #move forward half speed for 3 secs
         else:
-            self.drivetrain.drive_cartesian(0, 0, 0)  #stop
-        #this thing literally moves forward for 3 seconds as the auto setting
+            self.drivetrain.drive_cartesian(0, 0, 0)  #Stop

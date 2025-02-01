@@ -1,5 +1,5 @@
 # BEAR-e-controller
-Pythons are a type of snake, that are especially prevalent in places such as Florida. Burmese Pythons are actually invasive to Florida, as they out compete or eat up most typical wildlife.
+Python is a genus of constricting snakes in the Pythonidae family native to the tropics and subtropics of the Eastern Hemisphere. The name python was proposed by François Marie Daudin in 1803 for non-venomous flecked snakes. Currently, 10 python species are recognized as valid taxa. Pythons are especially prevalent in places such as Florida, as well as anywhere both tropical and subtropical. Burmese Pythons in particular are actually invasive to Florida, as they out compete or eat up most typical wildlife.
 
 RobotPy Documentation: https://robotpy.readthedocs.io/en/stable/
 

@@ -3,9 +3,11 @@ Pythons are a type of snake, that are especially prevalent in places such as Flo
 
 RobotPy Documentation: https://robotpy.readthedocs.io/en/stable/
 
+Below are the instructions for Python, ROBOrio and deployment, and the to do list for the team.
+
 ----------------------------------------------------------------------------------------------------------------------
 
-#Instructions
+# Instructions
 If RobotPy is not working on your computer or on this web, please open (the) Terminal and type the following:
 
 pip install robotpy
@@ -42,3 +44,18 @@ wpilib.SmartDashboard.putNumber("Joystick Y", y_speed)
 -------------------------------------------------------------------------------------------------------------------------
 
 Recommended to do this on your client (computer) and run on an environment such as VS Code. Open codespaces on VS or Github to work together in real-time.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+# To Do List
+
+Create a basic drivetrain.
+- Begin
+- Drive (Autonoumous)
+- Drive (TeleOperated)
+
+Utilities
+- Sensors/Camera if needed
+- Objective Mechanism control
+
+Refer to Dhillan for more instructions if not here.

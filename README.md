@@ -55,7 +55,7 @@ Recommended to do this on your client (computer) and run on an environment such 
 # To Do List
 
 Create a basic drivetrain.
-- Begin (error)
+- Begin
 - Autonomous Drive (refine this)
 - TeleOperation Drive
 

@@ -1,4 +1,5 @@
 import wpilib
+import wpilib.drive
 import rev  # For SPARK MAX
 
 class Drivetrain:

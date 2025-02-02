@@ -15,6 +15,7 @@ The Github repository is structured where "Main.py" is the main handler, the Lab
 If RobotPy is not working on your computer or on this web, please open (the) Terminal and type the following:
 
 - pip install robotpy
+- pip install wpilib
 - pip install robotpy-rev
 - pip install robotpy-ctre
 - pip install robotpy-navx

@@ -20,6 +20,7 @@ If RobotPy is not working on your computer or on this web, please open (the) Ter
 - pip install robotpy-ctre
 - pip install robotpy-navx
 - pip install robotpy-pathplanner
+- pip install robotpy robotpy-wpilib-utilities
 
 If still not working, you may need to import the WPI Library. Be sure to include this in your code:
 

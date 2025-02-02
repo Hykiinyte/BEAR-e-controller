@@ -10,3 +10,7 @@ server = "192.168.1.1" #IPv4 or IPv6 if needed
 ports = [ 8000, 8001, 8002 ] #connection ports
 connection_max = 5000
 enabled = true
+
+[build-system]
+requires = ["robotpy"]
+build-backend = "setuptools.build_meta"

@@ -11,6 +11,9 @@ ports = [ 8000, 8001, 8002 ] #connection ports
 connection_max = 5000
 enabled = true
 
+[tool.robotpy]
+
 [build-system]
 requires = ["robotpy"]
+requires = ["robotpy-rev"]
 build-backend = "setuptools.build_meta"

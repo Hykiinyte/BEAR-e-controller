@@ -16,3 +16,4 @@ class Autonomous:
             self.drivetrain.drive_cartesian(0.5, 0, 0)  #move forward half speed for 3 secs
         else:
             self.drivetrain.drive_cartesian(0, 0, 0)  #Stop
+print("autonomous initiated")

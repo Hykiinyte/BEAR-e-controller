@@ -35,7 +35,7 @@ class MyRobot(wpilib.TimedRobot):
         self.teleop.update()
 
     def utilInit(self):
-        """Starts the utility subsystem like arm or intake"""
+        """Starts the utility subsystem like arms or intake"""
         print("utilInit")
         self.util.update()
 

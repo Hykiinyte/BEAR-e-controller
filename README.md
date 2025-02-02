@@ -20,11 +20,12 @@ If RobotPy is not working on your computer or on this web, please open (the) Ter
 - pip install robotpy-ctre
 - pip install robotpy-navx
 - pip install robotpy-pathplanner
-- pip install robotpy robotpy-wpilib-utilities
+- pip install rev
 
 If still not working, you may need to import the WPI Library. Be sure to include this in your code:
 
 - import wpilib
+- import wpilib.drive (not always, but necessary)
 
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -46,6 +47,8 @@ Additionally, you can simulate the robot:
 As well as add Telemetry data for debugging and output reading
 - wpilib.SmartDashboard.putNumber("Joystick Y", y_speed)
 
+When simulating/executing the module code onto your computer, it should run once unless pushing out the outputs at least once and finish. You should recieve any errors along with where they occur. When deployed to a ROBORio, the wpilib Framework should handle it, which means that we can omit some parts of what you'd think should be in there, such as output update loops. Or least that's what I've learned, find out for yourself or something.
+
 -------------------------------------------------------------------------------------------------------------------------
 
 Recommended to do this on your client (computer) and run on an environment such as VS Code. Open codespaces on VS or Github to work together in real-time.
@@ -61,7 +64,7 @@ Create a basic drivetrain.
 
 Utilities
 - Sensors/Camera if needed (mechanical team aint doing shi)
-- Objective Mechanism control
+- Objective Mechanism control (like a ball groper)
 - Driver Station Utilities (xbox controller lol)
 
 Refer to Dhillan for more instructions if not here.

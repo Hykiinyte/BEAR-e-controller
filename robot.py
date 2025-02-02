@@ -31,11 +31,6 @@ class MyRobot(wpilib.TimedRobot):
 
     def teleopPeriodic(self):
         """Runs periodically during teleop"""
-        global yval, xval, zval
-        yval = self.controller.getY()
-        xval = self.controller.getX()
-        zval = self.controller.getZ()
-        print(f"Teleop: y={yval}, x={xval}, z={zval}")
         self.teleop.update()
 
 print("robot initiated")

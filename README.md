@@ -34,6 +34,9 @@ Install RobotPy on the ROBOrio
 - py -3 -m robotpy_installer download robotpy
 - py -3 -m robotpy_installer install robotpy
 
+Define the path to the module. This is typically a folder. Make sure "robot.py" and "pyproject.toml" exist inside the folder that is your robot module. Format; C:\Path1\Path2\Path3\Folder
+- cd C:\path1\path2\path3\Folder
+
 Deploy the code
 - py -3 -m robotpy deploy
 
@@ -52,13 +55,14 @@ Recommended to do this on your client (computer) and run on an environment such 
 # To Do List
 
 Create a basic drivetrain.
-- Begin
-- Drive (Autonoumous)
-- Drive (TeleOperated)
+- Begin (error)
+- Autonomous Drive (refine this)
+- TeleOperation Drive
 
 Utilities
-- Sensors/Camera if needed
+- Sensors/Camera if needed (mechanical team aint doing shi)
 - Objective Mechanism control
-- Driver Station Utilities
+- Driver Station Utilities (xbox controller lol)
 
 Refer to Dhillan for more instructions if not here.
+Remember to ask Sanjoe if there are snacks at the competition.

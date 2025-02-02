@@ -49,6 +49,8 @@ As well as add Telemetry data for debugging and output reading
 
 When simulating/executing the module code onto your computer, it should run once unless pushing out the outputs at least once and finish. You should recieve any errors along with where they occur. When deployed to a ROBORio, the wpilib Framework should handle it, which means that we can omit some parts of what you'd think should be in there, such as output update loops. Or least that's what I've learned, find out for yourself or something.
 
+Drive logic can be handled by the FRC Driver Station, which means you can use that to switch between modes, i.e., Autonomous and TeleOperated.
+
 -------------------------------------------------------------------------------------------------------------------------
 
 Recommended to do this on your client (computer) and run on an environment such as VS Code. Open codespaces on VS or Github to work together in real-time.

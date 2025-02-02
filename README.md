@@ -28,7 +28,7 @@ If still not working, you may need to import the WPI Library. Be sure to include
 
 ----------------------------------------------------------------------------------------------------------------------
 
-To deploy to ROBOrio, do the following:
+To deploy to ROBOrio, open the Terminal do the following:
 
 Install RobotPy on the ROBOrio
 - py -3 -m robotpy_installer download robotpy

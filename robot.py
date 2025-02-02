@@ -37,6 +37,6 @@ class MyRobot(wpilib.TimedRobot):
     def utilInit(self):
         """Starts the utility subsystem like arm or intake"""
         print("utilInit")
-        self.utilhandler.update()
+        self.util.update()
 
 print("robot initiated")

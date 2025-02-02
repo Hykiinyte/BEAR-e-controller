@@ -3,6 +3,8 @@ Python is a genus of constricting snakes in the Pythonidae family native to the 
 
 RobotPy Documentation: https://robotpy.readthedocs.io/en/stable/
 
+Python Documentation: https://docs.python.org/3/
+
 Cy-Bears Team 10402 Page: https://tinyurl.com/cybears-team10402
 
 Below are the instructions for Python, ROBOrio and deployment, and the to do list for the team.

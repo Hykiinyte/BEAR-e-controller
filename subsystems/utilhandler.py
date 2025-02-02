@@ -12,3 +12,6 @@ class Utilhandler:
         """Handles tools like a ball intake or a shooter"""
 
 print("utils initiated")
+
+#This is incomplete code. It is meant to be used as a reference for the user to have something to start with.
+#Have fun coding!

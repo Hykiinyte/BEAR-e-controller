@@ -10,6 +10,11 @@ class Drivetrain:
         self.rear_left = rev.SparkMax(16, rev.SparkMax.MotorType.kBrushless)
         self.rear_right = rev.SparkMax(13, rev.SparkMax.MotorType.kBrushless)
 
+        self.front_left.setInverted(False)
+        self.rear_left.setInverted(False)
+        self.front_right.setInverted(False)
+        self.rear_right.setInverted(False)
+
         self.drive = wpilib.drive.MecanumDrive(
             self.front_left, self.rear_left, self.front_right, self.rear_right
         )

@@ -65,4 +65,5 @@ Utilities
 - Driver Station Utilities (xbox controller lol)
 
 Refer to Dhillan for more instructions if not here.
+Refer to RobotPy Documentation if you don't know jackshit atm.
 Remember to ask Sanjoe if there are snacks at the competition.

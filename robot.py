@@ -5,7 +5,15 @@
 #pip install robotpy-navx
 #pip install robotpy-pathplanner
 
+#P.S. If RobotPy is not working on your computer or on this web, please open Terminal and type the following:
+#pip install robotpy
+#pip install robotpy-rev
+#pip install robotpy-ctre
+#pip install robotpy-navx
+#pip install robotpy-pathplanner
+
 import wpilib
+import wpilib.drive
 from subsystems.drivetrain import Drivetrain
 from commands.autonomous import Autonomous
 from commands.teleop import TeleopControl

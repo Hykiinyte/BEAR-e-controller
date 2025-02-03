@@ -13,30 +13,45 @@ from commands.teleop import TeleopControl
 
 class MyRobot(wpilib.TimedRobot):
     def robotInit(self):
-        """Initialize robot subsystems"""
-        print("robotInit")
-        self.drivetrain = Drivetrain()
-        self.auto = Autonomous(self.drivetrain)
-        self.teleop = TeleopControl(self.drivetrain)
-        self.util = Utilhandler()
+        try:
+            """Initialize robot subsystems"""
+            print("robotInit")
+            self.drivetrain = Drivetrain()
+            self.auto = Autonomous(self.drivetrain)
+            self.teleop = TeleopControl(self.drivetrain)
+            self.util = Utilhandler()
+        except:
+            print("Something went wrong trying to Initiate Robot.")
 
     def autonomousInit(self):
-        """Called once at the start of autonomous mode"""
-        print("autonomousInit")
-        self.auto.start()
+        try:
+            """Called once at the start of autonomous mode"""
+            print("autonomousInit")
+            self.auto.start()
+        except:
+            print("Something went wrong trying to initiate Autonomous.")
 
     def autonomousPeriodic(self):
-        """Runs periodically during autonomous"""
-        print("autonomousPeriodic")
-        self.auto.update()
+        try:
+            """Runs periodically during autonomous"""
+            print("autonomousPeriodic")
+            self.auto.update()
+        except:
+            print("Something went wrong trying to run Autonomous.")
 
     def teleopPeriodic(self):
-        """Runs periodically during teleop"""
-        self.teleop.update()
+        try:
+            """Runs periodically during teleop"""
+            self.teleop.update()
+        except:
+            print("Something went wrong running TeleOperation.")
 
     def utilInit(self):
-        """Starts the utility subsystem like arms or intake"""
-        print("utilInit")
-        self.util.update()
+        try:
+            """Starts the utility subsystem like arms or intake"""
+            print("utilInit")
+            self.util.update()
+        except:
+            print("Something went wrong initiating Utilities.")
 
 print("robot initiated")

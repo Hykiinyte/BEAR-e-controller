@@ -46,7 +46,6 @@ class MyRobot(wpilib.TimedRobot):
     def utilInit(self):
         try:
             """Starts the utility subsystem like arms or intake"""
-            print("utilInit")
             self.util.update()
         except:
             print("Something went wrong initiating Utilities.")

@@ -6,10 +6,10 @@ class Drivetrain:
     def __init__(self):
         """Initialize drivetrain motors"""
         try:
-            self.front_left = rev.CANSparkMax(14, rev.CANSparkMax.MotorType.kBrushless)
-            self.front_right = rev.CANSparkMax(12, rev.CANSparkMax.MotorType.kBrushless)
-            self.rear_left = rev.CANSparkMax(16, rev.CANSparkMax.MotorType.kBrushless)
-            self.rear_right = rev.CANSparkMax(13, rev.CANSparkMax.MotorType.kBrushless)
+            self.front_left = rev.SparkMax(14, rev.SparkMax.MotorType.kBrushless)
+            self.front_right = rev.SparkMax(12, rev.SparkMax.MotorType.kBrushless)
+            self.rear_left = rev.SparkMax(16, rev.SparkMax.MotorType.kBrushless)
+            self.rear_right = rev.SparkMax(13, rev.SparkMax.MotorType.kBrushless)
 
             # Set inversion (if needed)
             self.front_left.setInverted(False)

@@ -6,14 +6,15 @@ TeamName = "Cy-Bears"
 TeamNum = "10402"
 
 [database]
-server = "192.168.1.1" #IPv4 or IPv6 if needed
-ports = [ 8000, 8001, 8002 ] #connection ports
+server = "10.104.2.2" #IPv4 or IPv6 if needed
+ports = [8000, 8001, 8002] #connection ports
 connection_max = 5000
 enabled = true
 
 [tool.robotpy]
+robot_class = "MyRobot"  # <-- Replace this with your actual robot class name
+robotpy_version = "2025.2.1.1"
 
 [build-system]
-requires = ["robotpy"]
-requires = ["robotpy-rev"]
+requires = ["robotpy", "robotpy-rev", "setuptools", "setuptools_scm"]
 build-backend = "setuptools.build_meta"

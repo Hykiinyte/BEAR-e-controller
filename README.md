@@ -37,6 +37,7 @@ Install RobotPy and REV on the ROBOrio
 - py -3 -m robotpy_installer download robotpy
 - py -3 -m robotpy_installer install robotpy
 - py -3 -m robotpy_installer install robotpy-rev
+- py -3 -m robotpy_installer install [any other libraries required]
 
 Define the path to the module. This is typically a folder. Make sure "robot.py" and "pyproject.toml" exist inside the folder that is your robot module. Format; C:\Path1\Path2\Path3\Folder
 - cd C:\path1\path2\path3\Folder

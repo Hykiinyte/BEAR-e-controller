@@ -15,7 +15,6 @@ class MyRobot(wpilib.TimedRobot):
     def robotInit(self):
         try:
             """Initialize robot subsystems"""
-            print("robotInit")
             self.drivetrain = Drivetrain()
             self.auto = Autonomous(self.drivetrain)
             self.teleop = TeleopControl(self.drivetrain)
@@ -26,7 +25,6 @@ class MyRobot(wpilib.TimedRobot):
     def autonomousInit(self):
         try:
             """Called once at the start of autonomous mode"""
-            print("autonomousInit")
             self.auto.start()
         except:
             print("Something went wrong trying to initiate Autonomous.")
@@ -34,7 +32,6 @@ class MyRobot(wpilib.TimedRobot):
     def autonomousPeriodic(self):
         try:
             """Runs periodically during autonomous"""
-            print("autonomousPeriodic")
             self.auto.update()
         except:
             print("Something went wrong trying to run Autonomous.")

@@ -12,7 +12,6 @@ class TeleopControl:
         x_speed = self.controller.getX()  # Strafe
         z_rotation = self.controller.getZ()  # Rotation
         self.drivetrain.drive_cartesian(y_speed, x_speed, z_rotation)
-        print(f"Teleop: y={y_speed}, x={x_speed}, z={z_rotation}")
-
+        #print(f"Teleop: y={y_speed}, x={x_speed}, z={z_rotation}") # Uncomment to see joystick values
          
 print("teleop initiated")

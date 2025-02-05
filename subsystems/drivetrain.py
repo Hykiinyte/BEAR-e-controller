@@ -30,7 +30,6 @@ class Drivetrain:
     def drive_cartesian(self, y_speed, x_speed, z_rotation):
         """Mecanum drive movement"""
         try:
-            print(f"Driving with: y_speed={y_speed}, x_speed={x_speed}, z_rotation={z_rotation}")
             self.drive.driveCartesian(y_speed, x_speed, z_rotation)
         
         except Exception as e:

@@ -73,7 +73,7 @@ Utilities
 - Objective Mechanism control (like a ball groper)
 - Driver Station Utilities (xbox controller lol)
 
-Refer to Dhillan for more instructions if not here.
+Refer to Bhillah Salad for more instructions if not here.
 
 Refer to RobotPy Documentation if you don't know jackshit atm.
 

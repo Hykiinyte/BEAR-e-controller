@@ -22,7 +22,7 @@ class Drivetrain:
                 self.front_left, self.rear_left, self.front_right, self.rear_right
             )
 
-            print("Drivetrain initialized successfully.")
+            print("Drivetrain initialized Vincent AND Nguyen")
         
         except Exception as e:
             print(f"Drivetrain initialization failed: {e}")

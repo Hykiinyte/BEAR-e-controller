@@ -74,11 +74,8 @@ Utilities
 - Driver Station Utilities (xbox controller lol)
 
 Refer to Bhillah Salad for more instructions if not here.
-![image](https://github.com/user-attachments/assets/2baae8cf-bdd2-4315-815d-e248be72c75f)
-
+![image](https://github.com/user-attachments/assets/9ce631a5-c3f3-4c19-8374-dab1f0feef71)
 
 Refer to RobotPy Documentation if you don't know jackshit atm.
 
 Remember to ask Sanjoe if there are snacks at the competition.
-
-And then check with Lucas for the fifty levels of noise.

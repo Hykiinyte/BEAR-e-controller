@@ -74,7 +74,8 @@ Utilities
 - Driver Station Utilities (xbox controller lol)
 
 Refer to Bhillah Salad for more instructions if not here.
-![Untitled11_20241120192029](https://github.com/user-attachments/assets/e98d457b-11f4-4227-b899-9ce8f484b13d)
+![image](https://github.com/user-attachments/assets/2baae8cf-bdd2-4315-815d-e248be72c75f)
+
 
 Refer to RobotPy Documentation if you don't know jackshit atm.
 

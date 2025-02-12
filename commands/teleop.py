@@ -9,9 +9,8 @@ class TeleopControl:
     def update(self):
         """Called every cycle during teleop"""
         y_speed = -self.controller.getY()  # Forward/Backward
-        x_speed = self.controller.getX()  # Strafe
+        x_speed = -self.controller.getX()  # Strafe
         z_rotation = self.controller.getZ()  # Rotation
-        x_speed = -x_speed #invert the x movement
         self.drivetrain.drive_cartesian(y_speed, x_speed, z_rotation)
         #print(f"Teleop: y={y_speed}, x={x_speed}, z={z_rotation}") # Uncomment to see joystick values
          

@@ -19,7 +19,7 @@ class Drivetrain:
 
             # Create motor controllers wit mah SpeedControllerGroup
             self.drive = wpilib.drive.MecanumDrive(
-                self.front_left, self.rear_left, self.front_right, self.rear_right
+                self.front_right, self.rear_right, self.front_left, self.rear_left
             )
 
             print("Drivetrain initialized Vincent AND Nguyen")

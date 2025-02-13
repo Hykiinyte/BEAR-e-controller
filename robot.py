@@ -19,8 +19,8 @@ class MyRobot(wpilib.TimedRobot):
             self.auto = Autonomous(self.drivetrain)
             self.teleop = TeleopControl(self.drivetrain)
             self.util = Utilhandler()
-        except:
-            print("Something went wrong trying to Initiate Robot.")
+        except Exception as e:
+            print("Something went wrong trying to Initiate Robot:" {e})
 
     def autonomousInit(self):
         try:

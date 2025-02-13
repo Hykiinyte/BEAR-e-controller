@@ -10,7 +10,7 @@ from subsystems.drivetrain import Drivetrain
 from subsystems.utilhandler import Utilhandler
 from commands.autonomous import Autonomous
 from commands.teleop import TeleopControl
-from constants import rainthunder.jpg
+from pathlib import Path
 
 class MyRobot(wpilib.TimedRobot):
     def robotInit(self):
@@ -51,7 +51,14 @@ class MyRobot(wpilib.TimedRobot):
         except Exception as e:
             print(f"Something went wrong initiating Utilities: {e}")
 
-    def keyinit(self):
-        if constants."rainthunder.jpg"
+    def keyinit():
+        try:
+            keyfile_path = Path("constants") / "keyfile.jpg"
+            if keyfile_path.exists():
+                print("Keyfile found")
+            else:
+                raise FileNotFoundError("Keyfile not found")   
+        except Exception as e:
+            print(f"Something went wrong trying to find the keyfile: {e}")
 
 print("robot initiated")

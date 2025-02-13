@@ -18,6 +18,7 @@ class Drivetrain:
             self.rear_right.setInverted(True) 
 
             # Create motor controllers wit mah SpeedControllerGroup
+            # ideal config: (front_right, rear_right, front_left, rear_left)
             self.drive = wpilib.drive.MecanumDrive(
                 self.front_right, self.rear_right, self.front_left, self.rear_left
             )

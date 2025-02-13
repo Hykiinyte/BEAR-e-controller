@@ -10,6 +10,7 @@ from subsystems.drivetrain import Drivetrain
 from subsystems.utilhandler import Utilhandler
 from commands.autonomous import Autonomous
 from commands.teleop import TeleopControl
+from constants import rainthunder.jpg
 
 class MyRobot(wpilib.TimedRobot):
     def robotInit(self):
@@ -49,5 +50,8 @@ class MyRobot(wpilib.TimedRobot):
             self.util.update()
         except Exception as e:
             print(f"Something went wrong initiating Utilities: {e}")
+
+    def keyinit(self):
+        if constants."rainthunder.jpg"
 
 print("robot initiated")

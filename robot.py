@@ -20,34 +20,34 @@ class MyRobot(wpilib.TimedRobot):
             self.teleop = TeleopControl(self.drivetrain)
             self.util = Utilhandler()
         except Exception as e:
-            print("Something went wrong trying to Initiate Robot:" {e})
+            print(f"Something went wrong trying to Initiate Robot: {e}")
 
     def autonomousInit(self):
         try:
             """Called once at the start of autonomous mode"""
             self.auto.start()
-        except:
-            print("Something went wrong trying to initiate Autonomous.")
+        except Exception as e:
+            print(f"Something went wrong trying to initiate Autonomous: {e}")
 
     def autonomousPeriodic(self):
         try:
             """Runs periodically during autonomous"""
             self.auto.update()
-        except:
-            print("Something went wrong trying to run Autonomous.")
+        except Exception as e:
+            print(f"Something went wrong trying to run Autonomous: {e}")
 
     def teleopPeriodic(self):
         try:
             """Runs periodically during teleop"""
             self.teleop.update()
-        except:
-            print("Something went wrong running TeleOperation.")
+        except Exception as e:
+            print(f"Something went wrong running TeleOperation: {e}")
 
     def utilInit(self):
         try:
             """Starts the utility subsystem like arms or intake"""
             self.util.update()
-        except:
-            print("Something went wrong initiating Utilities.")
+        except Exception as e:
+            print(f"Something went wrong initiating Utilities: {e}")
 
 print("robot initiated")

@@ -1,5 +1,5 @@
+#remember that this is a laptop tool and not robot code, make sure to deploy separately from the robot as we don't want to run this on the RoboRIO
 import tkinter
-import wpilib
 
 #idk use Tkinter to create a window and design a GUI for our driver station
 #while this is not necessary, it is a good utility to have, especially for debugging and reading sensor values in real time possibly

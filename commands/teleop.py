@@ -12,7 +12,7 @@ class TeleopControl:
         x_speed_inv = x_speed * -1
         z_rotation = self.controller.getRawAxis(4)  # Adjust the index as needed.
         self.drivetrain.drive_cartesian(y_speed, x_speed_inv, z_rotation)
-        print(f"Teleop: y={y_speed}, x={x_speed}, rotation={z_rotation}")
+        #print(f"Teleop: y={y_speed}, x={x_speed}, rotation={z_rotation}")
 
 print("teleop initiated")
 

@@ -1,26 +1,17 @@
 import wpilib
-from wpilib import XboxController, GenericHID
 
 class TeleopControl:
     def __init__(self, drivetrain):
-        # Port 0 is the norm
-        self.controller = XboxController(0)
+        self.controller = wpilib.Joystick(0)  # back to joystick baby
         self.drivetrain = drivetrain
 
     def update(self):
-        """Called every cycle during teleop"""
-        # Use the left stick for vertical/strafing moves
-        y_speed = -self.controller.getY(GenericHID.Hand.kLeft)
-        x_speed = self.controller.getX(GenericHID.Hand.kLeft)
-        x_speed_inv = x_speed * -1
-        # Use the right stick horizontal axis for rotation
-        z_rotation = self.controller.getX(GenericHID.Hand.kRight)
-        
-        # Drivetraining get it
+        #ok should be axes 0 and 1 are the left stick and axes 3 and 4 are the right stick.
+        y_speed = -self.controller.getRawAxis(1)
+        x_speed = self.controller.getRawAxis(0)
+        z_rotation = self.controller.getRawAxis(4)  # Adjust the index as needed.
         self.drivetrain.drive_cartesian(y_speed, x_speed, z_rotation)
-        
-        # Optional: print debug info
-        #print(f"Teleop: y={y_speed}, x={x_speed}, rotation={z_rotation}")
+        print(f"Teleop: y={y_speed}, x={x_speed}, rotation={z_rotation}")
 
 print("teleop initiated")
 

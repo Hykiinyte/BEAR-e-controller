@@ -12,9 +12,9 @@ Below are the instructions for Python, ROBOrio and deployment, and the to do lis
 ----------------------------------------------------------------------------------------------------------------------
 
 # Instructions
-The Github repository is structured where "Main.py" is the main handler, the LabVIEW equivalent of "Robot Main.vi". In "commands" there are files like "teleop.py" for TeleOperated mode and "auto.py" for autonomous mode. The "constants" folder is for constant values held and shared. Changing may break code or something. Folder "subsytems" contain the drivetrain and utilities such as a ball intake. Please organize accordingly, as my expierence with being a game developer- FILE ORGANIZATION HELPS MAN so yeah you do you just don't break shit.
+The Github repository is structured where "robot.py" is the main handler, the LabVIEW equivalent of "Robot Main.vi". In "commands" there are files like "teleop.py" for TeleOperated mode and "auto.py" for autonomous mode. The "constants" folder is for constant values held and shared. Changing may break code or something. Folder "subsytems" contain the drivetrain and utilities such as a ball intake. Please organize accordingly, as my expierence with being a game developer- FILE ORGANIZATION HELPS MAN so yeah you do you just don't break shit.
 
-If RobotPy is not working on your computer or on this web, please open (the) Terminal and type the following:
+If RobotPy is not working on your computer or on this web, please open (the) Terminal (cmd, powershell, bash, etc) and type the following:
 
 - pip install robotpy
 - pip install wpilib
@@ -43,10 +43,12 @@ Define the path to the module. This is typically a folder. Make sure "robot.py" 
 - cd C:\path1\path2\path3\Folder
 
 Deploy the code
-- py -3 -m robotpy deploy
+- python -m robotpy deploy
+- py -3 -m robotpy deploy (alternate)
 
 Additionally, you can simulate the robot:
-- py -3 -m robotpy sim
+- python -m robotpy sim
+- py -3 -m robotpy sim (alternate)
 
 As well as add Telemetry data for debugging and output reading
 - wpilib.SmartDashboard.putNumber("Joystick Y", y_speed)
@@ -71,7 +73,7 @@ Create a basic drivetrain.
 Utilities
 - Sensors/Camera if needed (mechanical team aint doing shi)
 - Objective Mechanism control (like a ball groper)
-- Driver Station Utilities (xbox controller lol)
+- Driver Station Utilities (somebody gotta work on that UI i set up the framework with Tkinter)
 
 Refer to Bhillah Salad for more instructions if not here.
 ![image](https://github.com/user-attachments/assets/9ce631a5-c3f3-4c19-8374-dab1f0feef71)

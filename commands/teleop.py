@@ -1,4 +1,5 @@
 import wpilib
+import wpilib.drive
 
 class TeleopControl:
     def __init__(self, drivetrain):

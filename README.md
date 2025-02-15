@@ -78,6 +78,4 @@ Utilities
 Refer to Bhillah Salad for more instructions if not here.
 ![image](https://github.com/user-attachments/assets/9ce631a5-c3f3-4c19-8374-dab1f0feef71)
 
-Refer to RobotPy Documentation if you don't know jackshit atm.
-
 Remember to ask Sanjoe if there are snacks at the competition.

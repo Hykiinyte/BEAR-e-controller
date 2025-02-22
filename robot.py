@@ -8,11 +8,15 @@ import wpilib
 import wpilib.drive
 from subsystems.drivetrain import Drivetrain
 from subsystems.utilhandler import Utilhandler
+from subsystems.camerascript import Camera
 from commands.autonomous import Autonomous
 from commands.teleop import TeleopControl
 from pathlib import Path
 
 class MyRobot(wpilib.TimedRobot):
+
+    #----------Robot Initiation----------
+
     def robotInit(self):
         try:
             """Initialize robot subsystems"""
@@ -20,8 +24,11 @@ class MyRobot(wpilib.TimedRobot):
             self.auto = Autonomous(self.drivetrain)
             self.teleop = TeleopControl(self.drivetrain)
             self.util = Utilhandler()
+            self.camera = Camera()
         except Exception as e:
             print(f"Something went wrong trying to Initiate Robot: {e}")
+    
+    #----------Robot Functions----------
 
     def autonomousInit(self):
         try:
@@ -44,12 +51,23 @@ class MyRobot(wpilib.TimedRobot):
         except Exception as e:
             print(f"Something went wrong running TeleOperation: {e}")
 
+    #----------Utility Functions----------
+
     def utilInit(self):
         try:
             """Starts the utility subsystem like arms or intake"""
             self.util.update()
         except Exception as e:
             print(f"Something went wrong initiating Utilities: {e}")
+
+    def cameraInit(self):
+        try:
+            """Starts the camera"""
+            self.camera.cameraInit()
+        except Exception as e:
+            print(f"Something went wrong initiating Camera: {e}")
+
+    #----------Verification----------
 
     def keyinit():
         try:

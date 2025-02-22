@@ -50,6 +50,7 @@ class MyRobot(wpilib.TimedRobot):
             self.teleop.update()
         except Exception as e:
             print(f"Something went wrong running TeleOperation: {e}")
+    #missing "practice", "test", and disabled functions, however, they are not necessary for the robot to function
 
     #----------Utility Functions----------
 

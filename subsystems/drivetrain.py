@@ -14,16 +14,17 @@ class Drivetrain:
             # Set inversion (if needed)
             self.front_left.setInverted(False)
             self.rear_left.setInverted(False)
-            self.front_right.setInverted(True)
-            self.rear_right.setInverted(True) 
+            self.front_right.setInverted(False)
+            self.rear_right.setInverted(False) 
 
             # Create motor controllers wit mah SpeedControllerGroup
-            # ideal config: (front_right, rear_right, front_left, rear_left)
             self.drive = wpilib.drive.MecanumDrive(
-                self.front_right, self.rear_right, self.front_left, self.rear_left
+                self.front_left, 
+                self.rear_left, 
+                self.front_right, 
+                self.rear_right
             )
-
-            print("Drivetrain initialized Vincent AND Nguyen")
+            print("Drivetrain initialized")
         
         except Exception as e:
             print(f"Drivetrain initialization failed: {e}")

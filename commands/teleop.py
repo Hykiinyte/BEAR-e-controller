@@ -12,7 +12,8 @@ class TeleopControl:
         z_rotation = self.controller.getRightX()
 
         x_speed_inv = x_speed * -1
+        z_rot_inv = z_rotation * -1
 
-        self.drivetrain.drive_cartesian(y_speed, x_speed_inv, z_rotation)
+        self.drivetrain.drive_cartesian(y_speed, x_speed_inv, z_rot_inv)
 
 print("teleop initiated")

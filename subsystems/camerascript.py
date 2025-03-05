@@ -1,22 +1,21 @@
 import numpy as np
-from wpilib.cameraserver import CameraServer as CS
+from wpilib.cameraserver import CameraServer
 
 class Camera:
     def cameraInit():
         try:
             """Initialize camera"""
-            cam1 = CS.getInstance()
-            cam1.enableLogging()
-            cam1.startAutomaticCapture()
-            main(cam1)
+            CS = CameraServer.getInstance()
+            CS.enableLogging()
+            main(CS)
         except Exception as e:
             print(f"Something went wrong trying to initiate Camera: {e}")
 
 
-def main(cam1):
+def main(CS):
     CS.enableLogging()
 
-    cam1.CS.startAutomaticCapture()
+    cam1 = CS.startAutomaticCapture(dev=0, name=cam1)
     cam1.setResolution(640, 480)
 
     cvSink = CS.getVideo()

@@ -1,5 +1,6 @@
 import wpilib
 import wpilib.drive
+from subsystems.utilhandler import Utilhandler
 
 class TeleopControl:
     def __init__(self, drivetrain):
@@ -19,31 +20,61 @@ class TeleopControl:
 
         """operator controls"""
         #buttons
-        self.b1 = self.operator.getRawButton(1)  # button 1
-        self.b2 = self.operator.getRawButton(2)  # button 2
-        self.b3 = self.operator.getRawButton(3)  # button 3
-        self.b4 = self.operator.getRawButton(4)  # button 4
-        self.b5 = self.operator.getRawButton(5)  # button 5
+        self.handle = self.operator.getRawButton(1)  # button 1
+        self.cruise = self.operator.getRawButton(2)  # button 2
+        self.flash = self.operator.getRawButton(3)  # button 3
+        self.audio = self.operator.getRawButton(4)  # button 4
+        self.wipers = self.operator.getRawButton(5)  # button 5
+        self.map = self.operator.getRawButton(6) # button 6
+        self.light = self.operator.getRawButton(7)
+        self.talk = self.operator.getRawButton(8)
+
+        self.lever1up = self.operator.getRawButton(13)
+        self.lever1down = self.operator.getRawButton(14)
+
+        self.enginestart = self.operator.getRawButton(11)
+        self.emergencyoff = self.operator.getRawButton(12)
+
         # (add more buttons as needed)
 
         # POV
         self.operator.getPOV()  # POV
 
         # Axis
-        self.operator.getX()  # X axis
-        self.operator.getY()  # Y axis
-        self.operator.getZ()  # Z axis  
+        x_fine = self.operator.getX() * 0.1 # X axis
+        y_fine = self.operator.getY() * 0.1 # Y axis
+        z_fine = self.operator.getZ() * 0.1 # Z axis  
 
-        #test print statement with button presses
-        if self.b1 == True:
+        #button library
+        if self.handle == True:
             print("Button 1 pressed")
-        if self.b2 == True:
+        if self.cruise == True:
             print("Button 2 pressed")
-        if self.b3 == True:    
+        if self.flash == True:    
             print("Button 3 pressed")
-        if self.b4 == True:
+        if self.audio == True:
             print("Button 4 pressed")
-        if self.b5 == True:
+        if self.wipers == True:
             print("Button 5 pressed")
+        if self.map == True:
+            print("Button 6 pressed")
+        if self.light == True:
+            print("button 7")
+        if self.light == True:
+            print("button 8")
+
+        if self.enginestart == True:
+            print("engine start")
+        if self.emergencyoff == True:
+            print("emergency off")
+
+        # levers
+        if self.lever1up == True: #elevator lever 1
+            print("lever 1 up")
+        if self.lever1down == True:
+            print("lever 1 down")
+
+        # fine control
+        self.drivetrain.drive_cartesian(y_fine, x_fine, z_fine)
 
 print("teleop initiated")

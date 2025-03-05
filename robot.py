@@ -65,6 +65,7 @@ class MyRobot(wpilib.TimedRobot):
         try:
             """Starts the camera"""
             self.camera.cameraInit()
+            wpilib.CameraServer.launch('camerascript.py:main')
         except Exception as e:
             print(f"Something went wrong initiating Camera: {e}")
 

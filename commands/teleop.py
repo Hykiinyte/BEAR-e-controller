@@ -18,20 +18,20 @@ class TeleopControl:
 
         """operator controls"""
         #buttons
-        self.handle = self.operator.getRawButton(1)  # button 1
-        self.cruise = self.operator.getRawButton(2)  # button 2
-        self.flash = self.operator.getRawButton(3)  # button 3
-        self.audio = self.operator.getRawButton(4)  # button 4
-        self.wipers = self.operator.getRawButton(5)  # button 5
-        self.map = self.operator.getRawButton(6) # button 6
-        self.light = self.operator.getRawButton(7)
-        self.talk = self.operator.getRawButton(8)
+        self.handle = self.operator.getRawButton(1)  # 180 (change to wrist)
+        self.cruise = self.operator.getRawButton(2)  # P
+        self.flash = self.operator.getRawButton(3)  # elevator level 3
+        self.audio = self.operator.getRawButton(4)  # elevator level 4
+        self.wipers = self.operator.getRawButton(5)  # elevator level 1
+        self.map = self.operator.getRawButton(6) # elevator level 2
+        self.light = self.operator.getRawButton(7) # coral on
+        self.talk = self.operator.getRawButton(8) # algae on
 
-        self.lever1up = self.operator.getRawButton(13)
-        self.lever1down = self.operator.getRawButton(14)
+        self.lever1up = self.operator.getRawButton(13) # elevator adjustment
+        self.lever1down = self.operator.getRawButton(14) # elevator adjustment
 
-        self.enginestart = self.operator.getRawButton(11)
-        self.emergencyoff = self.operator.getRawButton(12)
+        self.enginestart = self.operator.getRawButton(11) # idk
+        self.emergencyoff = self.operator.getRawButton(12) # emergency off
 
         # (add more buttons as needed)
 

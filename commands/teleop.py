@@ -1,6 +1,6 @@
 import wpilib
 import wpilib.drive
-from subsystems.utilhandler import Utilhandler
+from subsystems.utilhandler import Elevator
 
 class TeleopControl:
     def __init__(self, drivetrain):
@@ -15,8 +15,6 @@ class TeleopControl:
         z_rotation = self.controller.getRightX()
         x_speed_inv = x_speed * -1
         z_rot_inv = z_rotation * -1
-
-        self.drivetrain.drive_cartesian(y_speed, x_speed_inv, z_rot_inv)
 
         """operator controls"""
         #buttons
@@ -47,7 +45,7 @@ class TeleopControl:
 
         #button library
         if self.handle == True:
-            print("Button 1 pressed")
+            self.drivetrain.drive_cartesian(0, 0, 1)
         if self.cruise == True:
             print("Button 2 pressed")
         if self.flash == True:    
@@ -69,12 +67,18 @@ class TeleopControl:
             print("emergency off")
 
         # levers
-        if self.lever1up == True: #elevator lever 1
-            print("lever 1 up")
-        if self.lever1down == True:
-            print("lever 1 down")
+        self.elevator = Elevator(motor_id=11)  #
+        if self.lever1up:
+            self.elevator.move(0.5)  # Move elevator up at half speed
+        elif self.lever1down:
+            self.elevator.move(-0.5)  # Move elevator down
+        else:
+            self.elevator.stop()  # Stop the elevator if no lever button is pressed
 
-        # fine control
-        self.drivetrain.drive_cartesian(y_fine, x_fine, z_fine)
+        """combo controls"""
+        y_total = y_speed + y_fine
+        x_total = x_speed_inv + x_fine
+        z_total = z_rot_inv + z_fine
+        self.drivetrain.drive_cartesian(y_total, x_total, z_total)
 
 print("teleop initiated")

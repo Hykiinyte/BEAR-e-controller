@@ -5,6 +5,8 @@ import rev  # For SPARK MAX
 class Utilhandler:
     def __init__(self):
         """Initialize utilitrain motors"""
+        global motor1
+        global motor2
         self.motor1 = rev.SparkMax(11, rev.SparkMax.MotorType.kBrushless)
         self.motor2 = rev.SparkMax(15, rev.SparkMax.MotorType.kBrushless)
 
@@ -16,8 +18,8 @@ class Elevator:
 
     def move(self, speed):
         """Sets the elevator motor speed (-1 to 1)."""
-        self.motor.set(1)
-        print(f"Elevator moving at {1}")
+        self.motor.set(speed)
+        print(f"Elevator moving at {speed}")
 
     def stop(self):
         self.motor.set(0)

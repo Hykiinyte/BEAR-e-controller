@@ -2,6 +2,7 @@ import wpilib
 import wpilib.drive
 from subsystems.utilhandler import Elevator
 from subsystems.utilhandler import CoralIntake
+from subsystems.utilhandler import AlgaeIntake
 
 class TeleopControl:
     def __init__(self, drivetrain):
@@ -32,8 +33,10 @@ class TeleopControl:
 
         self.lever1up = self.operator.getRawButton(13) # elevator adjustment
         self.lever1down = self.operator.getRawButton(14) # elevator adjustment
-        self.lever2up = self.operator.getRawButton(15)
-        self.lever2down = self.operator.getRawButton(16)
+        self.lever2up = self.operator.getRawButton(15) # coral intake adjustment
+        self.lever2down = self.operator.getRawButton(16) # coral intake adjustment
+        self.lever3up = self.operator.getRawButton(17) # algae intake adjustment
+        self.lever3down = self.operator.getRawButton(18) # algae intake adjustment
 
         self.enginestart = self.operator.getRawButton(11) # idk
         self.emergencyoff = self.operator.getRawButton(12) # emergency off
@@ -74,6 +77,7 @@ class TeleopControl:
         # levers
         self.elevator = Elevator(motor_id=11)
         self.coralintake = CoralIntake(motor_id=15)
+        self.algaeintake = AlgaeIntake(motor_id=1)
 
         if self.lever1up:
             self.elevator.move(0.5)  # Move elevator up at half speed
@@ -88,6 +92,13 @@ class TeleopControl:
             self.coralintake.move(-0.5)
         else:
             self.coralintake.stop()
+
+        if self.lever3up:
+            self.algaeintake.move(0.5)
+        elif self.lever3down:
+            self.algaeintake.move(-0.5)
+        else:
+            self.algaeintake.stop()
 
         
 

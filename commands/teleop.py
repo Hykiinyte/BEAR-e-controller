@@ -1,6 +1,7 @@
 import wpilib
 import wpilib.drive
 from subsystems.utilhandler import Elevator
+from subsystems.utilhandler import CoralIntake
 
 class TeleopControl:
     def __init__(self, drivetrain):
@@ -16,6 +17,8 @@ class TeleopControl:
         x_speed_inv = x_speed * -1
         z_rot_inv = z_rotation * -1
 
+        
+
         """operator controls"""
         #buttons
         self.handle = self.operator.getRawButton(1)  # 180 (change to wrist)
@@ -29,6 +32,8 @@ class TeleopControl:
 
         self.lever1up = self.operator.getRawButton(13) # elevator adjustment
         self.lever1down = self.operator.getRawButton(14) # elevator adjustment
+        self.lever2up = self.operator.getRawButton(15)
+        self.lever2down = self.operator.getRawButton(16)
 
         self.enginestart = self.operator.getRawButton(11) # idk
         self.emergencyoff = self.operator.getRawButton(12) # emergency off
@@ -67,13 +72,24 @@ class TeleopControl:
             print("emergency off")
 
         # levers
-        self.elevator = Elevator(motor_id=11)  #
+        self.elevator = Elevator(motor_id=11)
+        self.coralintake = CoralIntake(motor_id=15)
+
         if self.lever1up:
             self.elevator.move(0.5)  # Move elevator up at half speed
         elif self.lever1down:
             self.elevator.move(-0.5)  # Move elevator down
         else:
             self.elevator.stop()  # Stop the elevator if no lever button is pressed
+
+        if self.lever2up:
+            self.coralintake.move(0.5) # same stuff but for coral intake
+        elif self.lever2down:
+            self.coralintake.move(-0.5)
+        else:
+            self.coralintake.stop()
+
+        
 
         """combo controls"""
         y_total = y_speed + y_fine

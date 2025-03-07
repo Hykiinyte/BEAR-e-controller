@@ -7,23 +7,36 @@ class Utilhandler:
         """Initialize utilitrain motors"""
         global motor1
         global motor2
-        self.motor1 = rev.SparkMax(11, rev.SparkMax.MotorType.kBrushless)
-        self.motor2 = rev.SparkMax(15, rev.SparkMax.MotorType.kBrushless)
+        motor1 = rev.SparkMax(11, rev.SparkMax.MotorType.kBrushless)
+        motor2 = rev.SparkMax(15, rev.SparkMax.MotorType.kBrushless)
 
 print("utils initiated")
 
 class Elevator:
     def __init__(self, motor_id):
-        self.motor.setInverted(False)  # Adjust inversion as needed
+        motor1.setInverted(False)  # Adjust inversion as needed
 
     def move(self, speed):
         """Sets the elevator motor speed (-1 to 1)."""
-        self.motor.set(speed)
+        motor1.set(speed)
         print(f"Elevator moving at {speed}")
 
     def stop(self):
-        self.motor.set(0)
+        motor1.set(0)
         print("Elevator stopped")
+
+class CoralIntake:
+    def __init__(self, motor_id):
+        motor2.setInverted(False)  # Adjust inversion as needed
+
+    def move(self, speed):
+        """Sets the coral intake motor speed (-1 to 1)."""
+        motor2.set(speed)
+        print(f"Coral intake moving at {speed}")
+
+    def stop(self):
+        motor2.set(0)
+        print("Coral intake stopped")
 
 
 #This is incomplete code. It is meant to be used as a reference for the user to have something to start with.

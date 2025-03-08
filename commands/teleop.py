@@ -12,6 +12,13 @@ class TeleopControl:
         self.operator = wpilib.Joystick(1) # operator console
 
     def update(self):
+        #variables
+        self.elevator = Elevator(motor_id=11)
+        self.coralintake = CoralIntake(motor_id=15)
+        self.algaeintake = AlgaeIntake(motor_id=1)
+        self.deepcage = DeepCage(motor_id=2)
+
+
         """driver controls"""
         y_speed = -self.controller.getLeftY()
         x_speed = self.controller.getLeftX()
@@ -19,15 +26,35 @@ class TeleopControl:
         x_speed_inv = x_speed * -1
         z_rot_inv = z_rotation * -1
 
+        self.a = self.controller.getRawButton(1)  # A
+        self.b = self.controller.getRawButton(2)  # B
+        self.x = self.controller.getRawButton(3)  # X
+        self.y = self.controller.getRawButton(4)  # Y
+        self.lb = self.controller.getRawButton(5)  # Left Bumper
+        self.rb = self.controller.getRawButton(6)  # Right Bumper
+        self.lt = self.controller.getRawButton(7)  # Left Trigger
+        self.rt = self.controller.getRawButton(8)  # Right Trigger
+
+        if self.a == True:
+            print("Button A pressed")
+        if self.b == True:
+            print("Button B pressed")
+        if self.x == True:
+            print("Button X pressed")
+        if self.y == True:
+            print("Button Y pressed")
+        if self.lb == True:
+            print("Button LB pressed")
+        if self.rb == True:
+            print("Button RB pressed")
+        if self.lt == True:
+            print("Button LT pressed")
+        if self.rt == True:
+            print("Button RT pressed")
+
         
 
         """operator controls"""
-        #variables
-        self.elevator = Elevator(motor_id=11)
-        self.coralintake = CoralIntake(motor_id=15)
-        self.algaeintake = AlgaeIntake(motor_id=1)
-        self.deepcage = DeepCage(motor_id=2)
-
         #buttons
         self.handle = self.operator.getRawButton(1)  # 180 (change to wrist)
         self.cruise = self.operator.getRawButton(2)  # P

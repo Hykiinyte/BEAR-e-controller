@@ -29,15 +29,23 @@ class Elevator:
     def setpos(self, level):
         if level == 1:
             motor1.set(0.5)
+            pygame.time.wait(1000)
+            motor1.set(0)
             print("Elevator moving to level 1")
         elif level == 2:
             motor1.set(0.5)
+            pygame.time.wait(1000)
+            motor1.set(0)
             print("Elevator moving to level 2")
         elif level == 3:
             motor1.set(0.5)
+            pygame.time.wait(1000)
+            motor1.set(0)
             print("Elevator moving to level 3")
         elif level == 4:
             motor1.set(0.5)
+            pygame.time.wait(1000)
+            motor1.set(0)
             print("Elevator moving to level 4")
 
     def stop(self):
@@ -82,7 +90,3 @@ class DeepCage:
     def stop(self):
         motor4.set(0)
         print("Deep cage stopped")
-
-
-#This is incomplete code. It is meant to be used as a reference for the user to have something to start with.
-#Have fun coding!

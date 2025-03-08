@@ -3,6 +3,7 @@ import wpilib.drive
 from subsystems.utilhandler import Elevator
 from subsystems.utilhandler import CoralIntake
 from subsystems.utilhandler import AlgaeIntake
+from subsystems.utilhandler import DeepCage
 
 class TeleopControl:
     def __init__(self, drivetrain):
@@ -21,6 +22,12 @@ class TeleopControl:
         
 
         """operator controls"""
+        #variables
+        self.elevator = Elevator(motor_id=11)
+        self.coralintake = CoralIntake(motor_id=15)
+        self.algaeintake = AlgaeIntake(motor_id=1)
+        self.deepcage = DeepCage(motor_id=2)
+
         #buttons
         self.handle = self.operator.getRawButton(1)  # 180 (change to wrist)
         self.cruise = self.operator.getRawButton(2)  # P
@@ -37,6 +44,8 @@ class TeleopControl:
         self.lever2down = self.operator.getRawButton(16) # coral intake adjustment
         self.lever3up = self.operator.getRawButton(17) # algae intake adjustment
         self.lever3down = self.operator.getRawButton(18) # algae intake adjustment
+        self.lever4up = self.operator.getRawButton(19) # deep cage adjustment
+        self.lever4down = self.operator.getRawButton(20) # deep cage adjustment
 
         self.enginestart = self.operator.getRawButton(11) # idk
         self.emergencyoff = self.operator.getRawButton(12) # emergency off
@@ -53,16 +62,20 @@ class TeleopControl:
 
         #button library
         if self.handle == True:
-            self.drivetrain.drive_cartesian(0, 0, 1)
+            print("Button 1 pressed")
         if self.cruise == True:
             print("Button 2 pressed")
         if self.flash == True:    
+            self.elevator.setpos(3) #elevator level 3
             print("Button 3 pressed")
         if self.audio == True:
+            self.elevator.setpos(4) #elevator level 4
             print("Button 4 pressed")
         if self.wipers == True:
+            self.elevator.setpos(1) #elevator level 1
             print("Button 5 pressed")
         if self.map == True:
+            self.elevator.setpos(2) #elevator level 2
             print("Button 6 pressed")
         if self.light == True:
             print("button 7")
@@ -75,10 +88,6 @@ class TeleopControl:
             print("emergency off")
 
         # levers
-        self.elevator = Elevator(motor_id=11)
-        self.coralintake = CoralIntake(motor_id=15)
-        self.algaeintake = AlgaeIntake(motor_id=1)
-
         if self.lever1up:
             self.elevator.move(0.5)  # Move elevator up at half speed
         elif self.lever1down:
@@ -93,12 +102,19 @@ class TeleopControl:
         else:
             self.coralintake.stop()
 
-        if self.lever3up:
+        if self.lever3up: # same stuff but for algae intake
             self.algaeintake.move(0.5)
         elif self.lever3down:
             self.algaeintake.move(-0.5)
         else:
             self.algaeintake.stop()
+
+        if self.lever4up: #DEEEEEEEP CAAAAAAAGEEEE
+            self.deepcage.move(0.5)
+        elif self.lever4down:
+            self.deepcage.move(-0.5)
+        else:
+            self.deepcage.stop()
 
         
 

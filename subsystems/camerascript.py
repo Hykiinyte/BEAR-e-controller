@@ -1,17 +1,15 @@
 import numpy as np
-from cscore import CameraServer
+from cscore import CameraServer as CS
 
 
 
 def main():
-    CS = CameraServer.getInstance()
     CS.enableLogging()
 
-    cam1 = CS.startAutomaticCapture(dev=0, name=cam1)
-    cam1.setResolution(640, 480)
+    CS.startAutomaticCapture()
 
     cvSink = CS.getVideo()
-    outputStream = CS.putVideo("Rectangle", 640, 480)
+    outputStream = CS.putVideo("cam1", 640, 480)
 
     # Allocating new images is very expensive, always try to preallocate
     mat = np.zeros(shape=(480, 640, 3), dtype=np.uint8)

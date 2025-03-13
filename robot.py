@@ -8,7 +8,7 @@ import wpilib
 import wpilib.drive
 from subsystems.drivetrain import Drivetrain
 from subsystems.utilhandler import Utilhandler
-from cscore import CameraServer as CS
+from wpilib.cameraserver import CameraServer as CS
 from commands.autonomous import Autonomous
 from commands.teleop import TeleopControl
 from pathlib import Path

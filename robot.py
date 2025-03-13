@@ -8,7 +8,7 @@ import wpilib
 import wpilib.drive
 from subsystems.drivetrain import Drivetrain
 from subsystems.utilhandler import Utilhandler
-from subsystems.camerascript import Camera
+from wpilib.cameraserver import CameraServer as CS
 from commands.autonomous import Autonomous
 from commands.teleop import TeleopControl
 from pathlib import Path
@@ -24,7 +24,7 @@ class MyRobot(wpilib.TimedRobot):
             self.auto = Autonomous(self.drivetrain)
             self.teleop = TeleopControl(self.drivetrain)
             self.util = Utilhandler()
-            self.camera = Camera()
+            CS.launch("camerascript.py:main")
         except Exception as e:
             print(f"Something went wrong trying to Initiate Robot: {e}")
     
@@ -60,13 +60,6 @@ class MyRobot(wpilib.TimedRobot):
             self.util.update()
         except Exception as e:
             print(f"Something went wrong initiating Utilities: {e}")
-
-    def cameraInit(self):
-        try:
-            """Starts the camera"""
-            self.camera.cameraInit()
-        except Exception as e:
-            print(f"Something went wrong initiating Camera: {e}")
 
     #----------Verification----------
 

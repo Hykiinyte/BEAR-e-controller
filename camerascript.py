@@ -1,26 +1,16 @@
 import numpy as np
-from wpilib.cameraserver import CameraServer as CS
-
-class Camera:
-    def cameraInit():
-        try:
-            """Initialize camera"""
-            cam1 = CS.getInstance()
-            cam1.enableLogging()
-            cam1.startAutomaticCapture()
-            main(cam1)
-        except Exception as e:
-            print(f"Something went wrong trying to initiate Camera: {e}")
+from cscore import CameraServer as CS
 
 
-def main(cam1):
+
+def main():
     CS.enableLogging()
 
-    cam1.CS.startAutomaticCapture()
+    cam1 = CS.startAutomaticCapture()
     cam1.setResolution(640, 480)
 
     cvSink = CS.getVideo()
-    outputStream = CS.putVideo("Rectangle", 640, 480)
+    outputStream = CS.putVideo("cam1", 640, 480)
 
     # Allocating new images is very expensive, always try to preallocate
     mat = np.zeros(shape=(480, 640, 3), dtype=np.uint8)

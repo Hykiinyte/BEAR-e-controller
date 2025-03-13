@@ -1,6 +1,7 @@
 [tool.robotpy]
 robot_class = "MyRobot"  # <-- Replace this with your actual robot class name
-robotpy_version = "2025.2.1.2"
+robotpy_version = "2025.3.1.1"
+robotpy_extras = ["cscore"]
 
 [build-system]
 requires = ["robotpy", "robotpy-rev", "robotpy-wpilib", "setuptools", "setuptools_scm"]

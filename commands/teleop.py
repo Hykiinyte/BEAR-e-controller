@@ -116,9 +116,9 @@ class TeleopControl:
 
         # levers
         if self.lever1up:
-            self.elevator.move(0.5)  # Move elevator up at half speed
+            self.elevator.move(0.1)  # Move elevator up at
         elif self.lever1down:
-            self.elevator.move(-0.5)  # Move elevator down
+            self.elevator.move(-0.1)  # Move elevator down
         else:
             self.elevator.stop()  # Stop the elevator if no lever button is pressed
 

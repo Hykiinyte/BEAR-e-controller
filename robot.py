@@ -7,7 +7,7 @@
 import wpilib
 import wpilib.drive
 from subsystems.drivetrain import Drivetrain
-from subsystems.utilhandler import Utilhandler
+from subsystems import utilhandler
 from wpilib.cameraserver import CameraServer as CS
 from commands.autonomous import Autonomous
 from commands.teleop import TeleopControl
@@ -23,7 +23,7 @@ class MyRobot(wpilib.TimedRobot):
             self.drivetrain = Drivetrain()
             self.auto = Autonomous(self.drivetrain)
             self.teleop = TeleopControl(self.drivetrain)
-            self.util = Utilhandler()
+            self.util = utilhandler()
             CS.launch("camerascript.py:main")
         except Exception as e:
             print(f"Something went wrong trying to Initiate Robot: {e}")

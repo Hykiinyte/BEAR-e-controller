@@ -1,199 +1,99 @@
 import wpilib
-import wpilib.drive
-import pygame
-import rev  # For SPARK MAX
+import rev
+import time
 
-class Utilhandler:
-    def __init__(self):
-        """Initialize utilitrain motors"""
-        global motor1
-        global motor2
-        global motor3
-        global motor4
-        motor1 = rev.SparkMax(11, rev.SparkMax.MotorType.kBrushless)
-        motor2 = rev.SparkMax(15, rev.SparkMax.MotorType.kBrushless)
-        motor3 = rev.SparkMax(1, rev.SparkMax.MotorType.kBrushless)
-        motor4 = rev.SparkMax(2, rev.SparkMax.MotorType.kBrushless)
+class MotorController:
+    def __init__(self, device_id, inverted=False):
+        self.motor = rev.SparkMax(device_id, rev.SparkMax.MotorType.kBrushless)
+        self.motor.setInverted(inverted)
 
-print("utils initiated")
+    def set(self, speed):
+        self.motor.set(speed)
+
+    def stop(self):
+        self.set(0)
+
 
 class Elevator:
-    def __init__(self, motor_id):
-        motor1.setInverted(False)  # Adjust inversion as needed
+    # Assume 1 second per level change for this example.
+    LEVEL_TIME = 1.0
 
-    def move(self, speed):
-        """Sets the elevator motor speed (-1 to 1)."""
-        motor1.set(speed)
-        print(f"Elevator moving at {speed}")
+    def __init__(self, motor1: MotorController, motor2: MotorController):
+        self.motor1 = motor1
+        self.motor2 = motor2
+        self.current_level = 0  # Levels: 0 (base) to 4 (top)
+        self.target_level = 0
+        self.speed = 0.5
+        self.moving = False
+        self.move_start_time = None
+        self.move_duration = 0
 
-    elevator_level = 0
-    elevator_speed = 0.5
-    base = 0
-    low = 1
-    mid = 2
-    high = 3
-    top = 4
-    def setpos(self, level):
-        if level == 0:
-            if level == 0:
-                self.elevator_level = self.base
-                print("Elevator set to base")
-            elif level == 1:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(1000)
-                self.motor1.set(0)
-                self.elevator_level = self.low
-            elif level == 2:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(2000)
-                self.motor1.set(0)
-                self.elevator_level = self.mid
-            elif level == 3:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(3000)
-                self.motor1.set(0)
-                self.elevator_level = self.high
-            elif level == 4:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(4000)
-                self.motor1.set(0)
-                self.elevator_level = self.top
-        elif level == 1:
-            if level == 0:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(1000)
-                self.motor1.set(0)
-                self.elevator_level = self.base
-            elif level == 1:
-                self.elevator_level = self.low
-                print("Elevator set to low")
-            elif level == 2:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(1000)
-                self.motor1.set(0)
-                self.elevator_level = self.mid
-            elif level == 3:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(2000)
-                self.motor1.set(0)
-                self.elevator_level = self.high
-            elif level == 4:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(3000)
-                self.motor1.set(0)
-                self.elevator_level = self.top
-        elif level == 2:
-            if level == 0:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(2000)
-                self.motor1.set(0)
-                self.elevator_level = self.base
-            elif level == 1:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(1000)
-                self.motor1.set(0)
-                self.elevator_level = self.low
-            elif level == 2:
-                self.elevator_level = self.mid
-                print("Elevator set to mid")
-            elif level == 3:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(1000)
-                self.motor1.set(0)
-                self.elevator_level = self.high
-            elif level == 4:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(2000)
-                self.motor1.set(0)
-                self.elevator_level = self.top
-        elif level == 3:
-            if level == 0:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(3000)
-                self.motor1.set(0)
-                self.elevator_level = self.base
-            elif level == 1:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(2000)
-                self.motor1.set(0)
-                self.elevator_level = self.low
-            elif level == 2:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(1000)
-                self.motor1.set(0)
-                self.elevator_level = self.mid
-            elif level == 3:
-                self.elevator_level = self.high
-                print("Elevator set to high")
-            elif level == 4:
-                self.motor1.set(self.elevator_speed)
-                pygame.time.wait(1000)
-                self.motor1.set(0)
-                self.elevator_level = self.top
-        elif level == 4:
-            if level == 0:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(4000)
-                self.motor1.set(0)
-                self.elevator_level = self.base
-            elif level == 1:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(3000)
-                self.motor1.set(0) 
-                self.elevator_level = self.low
-            elif level == 2:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(2000)
-                self.motor1.set(0)
-                self.elevator_level = self.mid
-            elif level == 3:
-                self.motor1.set(-1 * self.elevator_speed)
-                pygame.time.wait(1000)
-                self.motor1.set(0)
-                self.elevator_level = self.high
-            elif level == 4:
-                self.elevator_level = self.top
-                print("Elevator set to top")
+    def move_manual(self, speed):
+        self.motor1.set(speed)
+        self.motor2.set(-speed)
+        self.moving = True
 
     def stop(self):
-        motor1.set(0)
-        print("Elevator stopped")
+        self.motor1.stop()
+        self.motor2.stop()
+        self.moving = False
+        self.move_start_time = None
+
+    def set_position(self, target_level):
+        # If already at target, do nothing.
+        if target_level == self.current_level:
+            return
+
+        diff = target_level - self.current_level
+        direction = 1 if diff > 0 else -1
+        # Set the movement duration (assume LEVEL_TIME per level change)
+        self.move_duration = abs(diff) * self.LEVEL_TIME
+        self.move_start_time = time.time()
+        self.target_level = target_level
+
+        # Start moving both motors in opposite directions
+        self.motor1.set(self.speed * direction)
+        self.motor2.set(-self.speed * direction)
+        self.moving = True
+
+    def update(self):
+        # This method should be called periodically (e.g., in teleop's update loop)
+        if self.moving and self.move_start_time is not None:
+            elapsed = time.time() - self.move_start_time
+            if elapsed >= self.move_duration:
+                self.stop()
+                self.current_level = self.target_level
+                print(f"Elevator set to level {self.current_level}")
+
 
 class CoralIntake:
-    def __init__(self, motor_id):
-        motor2.setInverted(False)  # Adjust inversion as needed
+    def __init__(self, motor: MotorController):
+        self.motor = motor
 
     def move(self, speed):
-        """Sets the coral intake motor speed (-1 to 1)."""
-        motor2.set(speed)
-        print(f"Coral intake moving at {speed}")
+        self.motor.set(speed)
 
     def stop(self):
-        motor2.set(0)
-        print("Coral intake stopped")
+        self.motor.stop()
+
 
 class AlgaeIntake:
-    def __init__(self, motor_id):
-        motor3.setInverted(False)  # Adjust inversion as needed
+    def __init__(self, motor: MotorController):
+        self.motor = motor
 
     def move(self, speed):
-        """Sets the algae intake motor speed (-1 to 1)."""
-        motor3.set(speed)
-        print(f"Algae intake moving at {speed}")
+        self.motor.set(speed)
 
     def stop(self):
-        motor3.set(0)
-        print("Algae intake stopped")
+        self.motor.stop()
+
 
 class DeepCage:
-    def __init__(self, motor_id):
-        motor4.setInverted(False)  # Adjust inversion as needed
+    def __init__(self, motor: MotorController):
+        self.motor = motor
 
     def move(self, speed):
-        """Sets the deep cage motor speed (-1 to 1)."""
-        motor4.set(speed)
-        print(f"Deep cage moving at {speed}")
+        self.motor.set(speed)
 
     def stop(self):
-        motor4.set(0)
-        print("Deep cage stopped")
+        self.motor.stop()

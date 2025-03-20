@@ -1,11 +1,12 @@
 import wpilib
-from subsystems.utilhandler import (
-    Elevator,
-    CoralIntake,
-    AlgaeIntake,
-    DeepCage,
-    MotorController
-)
+from subsystems import utilhandler
+from subsystems.utilhandler import Elevator
+from subsystems.utilhandler import CoralIntake
+from subsystems.utilhandler import CoralSpin
+from subsystems.utilhandler import AlgaeIntake
+from subsystems.utilhandler import AlgaeSpin
+from subsystems.utilhandler import DeepCage
+from subsystems.utilhandler import MotorController
 
 class TeleopControl:
     def __init__(self, drivetrain):
@@ -24,8 +25,10 @@ class TeleopControl:
 
         # Create subsystems
         self.elevator = Elevator(self.elevator_motor1, self.elevator_motor2)
-        self.coral_intake = CoralIntake(self.coral_motor1, self.coral_motor2)
-        self.algae_intake = AlgaeIntake(self.algae_motor1, self.algae_motor2)
+        self.coral_intake = CoralIntake(self.coral_motor1)
+        self.coral_spin = CoralSpin(self.coral_motor2)
+        self.algae_intake = AlgaeIntake(self.algae_motor1)
+        self.algae_spin = AlgaeSpin(self.algae_motor2)
         self.deepcage = DeepCage(self.deepcage_motor)
 
     def update(self):
@@ -67,12 +70,26 @@ class TeleopControl:
         else:
             self.coral_intake.stop()
 
+        if self.operator.getRawButton(8):
+            self.coral_spin.move(0.5)
+        elif not self.operator.getRawButton(8):
+            self.coral_spin.move(-0.5)
+        else:
+            self.coral_spin.stop()
+
         if self.operator.getRawButton(19):
             self.algae_intake.move(0.5)
         elif self.operator.getRawButton(20):
             self.algae_intake.move(-0.5)
         else:
             self.algae_intake.stop()
+
+        if self.operator.getRawButton(9):
+            self.algae_spin.move(0.5)
+        elif not self.operator.getRawButton(9):
+            self.algae_spin.move(-0.5)
+        else:
+            self.algae_spin.stop()
 
         if self.operator.getRawButton(21):
             self.deepcage.move(0.5)

@@ -16,14 +16,14 @@ class MotorController:
 
 class Elevator:
     # Assume 1 second per level change for this example.
-    LEVEL_TIME = 1.0
+    LEVEL_TIME = 0.5
 
     def __init__(self, motor1: MotorController, motor2: MotorController):
         self.motor1 = motor1
         self.motor2 = motor2
         self.current_level = 0  # Levels: 0 (base) to 4 (top)
         self.target_level = 0
-        self.speed = 0.5
+        self.speed = 1
         self.moving = False
         self.move_start_time = None
         self.move_duration = 0
@@ -75,9 +75,27 @@ class CoralIntake:
 
     def stop(self):
         self.motor.stop()
+class CoralSpin:
+    def __init__(self, motor: MotorController):
+        self.motor = motor
+
+    def move(self, speed):
+        self.motor.set(speed)
+
+    def stop(self):
+        self.motor.stop()
 
 
 class AlgaeIntake:
+    def __init__(self, motor: MotorController):
+        self.motor = motor
+
+    def move(self, speed):
+        self.motor.set(speed)
+
+    def stop(self):
+        self.motor.stop()
+class AlgaeSpin:
     def __init__(self, motor: MotorController):
         self.motor = motor
 

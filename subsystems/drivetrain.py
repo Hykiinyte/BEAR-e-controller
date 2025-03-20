@@ -1,7 +1,7 @@
 import wpilib
 import wpilib.drive
 import rev  # For SPARK MAX
-import ctre
+import ctre # For TalonSRX
 
 class Drivetrain:
     def __init__(self):

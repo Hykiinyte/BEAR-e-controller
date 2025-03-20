@@ -1,7 +1,6 @@
 import wpilib
 import wpilib.drive
 import rev  # For SPARK MAX
-import ctre
 
 class Drivetrain:
     def __init__(self):
@@ -11,14 +10,12 @@ class Drivetrain:
             self.front_right = rev.SparkMax(12, rev.SparkMax.MotorType.kBrushed)
             self.rear_left = rev.SparkMax(16, rev.SparkMax.MotorType.kBrushed)
             self.rear_right = rev.SparkMax(13, rev.SparkMax.MotorType.kBrushed)
-            self.placeholder = ctre.TalonSRX(1)
             
             # Set inversion (if needed)
             self.front_left.setInverted(False)
             self.rear_left.setInverted(False)
             self.front_right.setInverted(False)
             self.rear_right.setInverted(False)
-            self.placeholder.setInverted(False)
 
             # Create motor controllers wit mah SpeedControllerGroup
             self.drive = wpilib.drive.MecanumDrive(

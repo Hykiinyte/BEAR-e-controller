@@ -1,6 +1,7 @@
 import wpilib
 import wpilib.drive
 import rev  # For SPARK MAX
+import ctre
 
 class Drivetrain:
     def __init__(self):

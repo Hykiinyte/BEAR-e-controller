@@ -13,18 +13,19 @@ class TeleopControl:
         self.operator = wpilib.Joystick(1)  # Operator console
         self.drivetrain = drivetrain
 
-        # Initialize motor controllers with new remapping.
-        # Adjust motor IDs and inversion as needed.
+        # Adjust motor IDs and inversion as needed
         self.elevator_motor1 = MotorController(11, inverted=False)
         self.elevator_motor2 = MotorController(15, inverted=True)
-        self.coral_motor = MotorController(1, inverted=False)
-        self.algae_motor = MotorController(2, inverted=False)
-        self.deepcage_motor = MotorController(3, inverted=False)
+        self.coral_motor1 = MotorController(1, inverted=False)
+        self.coral_motor2 = MotorController(2, inverted=False)
+        self.algae_motor1 = MotorController(3, inverted=False)
+        self.algae_motor2 = MotorController(4, inverted=False)
+        self.deepcage_motor = MotorController(5, inverted=False)
 
         # Create subsystems
         self.elevator = Elevator(self.elevator_motor1, self.elevator_motor2)
-        self.coral_intake = CoralIntake(self.coral_motor)
-        self.algae_intake = AlgaeIntake(self.algae_motor)
+        self.coral_intake = CoralIntake(self.coral_motor1, self.coral_motor2)
+        self.algae_intake = AlgaeIntake(self.algae_motor1, self.algae_motor2)
         self.deepcage = DeepCage(self.deepcage_motor)
 
     def update(self):

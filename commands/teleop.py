@@ -1,12 +1,18 @@
 import wpilib
-from subsystems import utilhandler
 from subsystems.utilhandler import Elevator
 from subsystems.utilhandler import CoralIntake
 from subsystems.utilhandler import CoralSpin
 from subsystems.utilhandler import AlgaeIntake
-from subsystems.utilhandler import AlgaeSpin
 from subsystems.utilhandler import DeepCage
 from subsystems.utilhandler import MotorController
+
+"""
+10, 11, 12, 13 drivetrain (FL, RL, FR, RR)
+14, 15, elevator
+16, 17, coral (wrist, intake)
+18, 19, algae (left, right)
+20, deepcage
+"""
 
 class TeleopControl:
     def __init__(self, drivetrain):
@@ -15,20 +21,19 @@ class TeleopControl:
         self.drivetrain = drivetrain
 
         # Adjust motor IDs and inversion as needed
-        self.elevator_motor1 = MotorController(11, inverted=False)
+        self.elevator_motor1 = MotorController(14, inverted=False)
         self.elevator_motor2 = MotorController(15, inverted=True)
-        self.coral_motor1 = MotorController(1, inverted=False)
-        self.coral_motor2 = MotorController(2, inverted=False)
-        self.algae_motor1 = MotorController(3, inverted=False)
-        self.algae_motor2 = MotorController(4, inverted=False)
-        self.deepcage_motor = MotorController(5, inverted=False)
+        self.coral_motor1 = MotorController(16, inverted=False)
+        self.coral_motor2 = MotorController(17, inverted=False)
+        self.algae_motor1 = MotorController(18, inverted=False)
+        self.algae_motor2 = MotorController(19, inverted=False)
+        self.deepcage_motor = MotorController(20, inverted=False)
 
         # Create subsystems
         self.elevator = Elevator(self.elevator_motor1, self.elevator_motor2)
         self.coral_intake = CoralIntake(self.coral_motor1)
         self.coral_spin = CoralSpin(self.coral_motor2)
-        self.algae_intake = AlgaeIntake(self.algae_motor1)
-        self.algae_spin = AlgaeSpin(self.algae_motor2)
+        self.algae_intake = AlgaeIntake(self.algae_motor1, self.algae_motor2)
         self.deepcage = DeepCage(self.deepcage_motor)
 
     def update(self):
@@ -52,48 +57,54 @@ class TeleopControl:
         elif self.operator.getRawButton(6):  # Button 6 sets level 2 (mid)
             self.elevator.set_position(2)
             print("Operator: Elevator set to level 2")
+        elif self.operator.getRawButton(1):
+            self.elevator.set_position(1)
+            print("base")
 
         # Manual elevator control via levers
         if self.operator.getRawButton(13):
-            self.elevator.move_manual(0.1)  # manual up
+            self.elevator.move_manual(0.15)  # manual up
         elif self.operator.getRawButton(14):
-            self.elevator.move_manual(-0.1)  # manual down
+            self.elevator.move_manual(-0.15)  # manual down
         else:
             # If no manual override, ensure motors are stopped.
-            self.elevator.stop()
+            self.elevator.move_manual(0.01)
 
         # Intake controls for Coral, Algae, and Deep Cage:
-        if self.operator.getRawButton(17):
-            self.coral_intake.move(0.5)
-        elif self.operator.getRawButton(18):
-            self.coral_intake.move(-0.5)
+        #Coral operates on two separate functions, wrist and intake.
+        #Wrist
+        if self.operator.getRawButton(15):
+            self.coral_intake.move(0.2)
+        elif self.operator.getRawButton(16):
+            self.coral_intake.move(-0.2)
         else:
             self.coral_intake.stop()
 
-        if self.operator.getRawButton(8):
+        #Intake direction
+        self.coral_spin.move(0.5)
+        if self.operator.getRawButton(7):
             self.coral_spin.move(0.5)
-        elif not self.operator.getRawButton(8):
+        elif not self.operator.getRawButton(7):
             self.coral_spin.move(-0.5)
         else:
             self.coral_spin.stop()
 
-        if self.operator.getRawButton(19):
+        # Algae intake location partially based on elevator.
+        # Both motors should move in tandem in one function.
+        if self.operator.getRawButton(17):
             self.algae_intake.move(0.5)
-        elif self.operator.getRawButton(20):
+            self.algae_spin.move(-0.5)
+        elif self.operator.getRawButton(18):
             self.algae_intake.move(-0.5)
+            self.algae_spin.move(0.5)
         else:
             self.algae_intake.stop()
-
-        if self.operator.getRawButton(9):
-            self.algae_spin.move(0.5)
-        elif not self.operator.getRawButton(9):
-            self.algae_spin.move(-0.5)
-        else:
             self.algae_spin.stop()
 
-        if self.operator.getRawButton(21):
+        #Deep cage is one function of one motor on a lever.
+        if self.operator.getRawButton(19):
             self.deepcage.move(0.5)
-        elif self.operator.getRawButton(22):
+        elif self.operator.getRawButton(20):
             self.deepcage.move(-0.5)
         else:
             self.deepcage.stop()

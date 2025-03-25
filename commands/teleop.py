@@ -62,13 +62,30 @@ class TeleopControl:
             print("base")
 
         # Manual elevator control via levers
-        if self.operator.getRawButton(13):
-            self.elevator.move_manual(0.15)  # manual up
-        elif self.operator.getRawButton(14):
-            self.elevator.move_manual(-0.15)  # manual down
+        #speed toggle
+        turbovator = False
+        if self.operator.getRawButton(12):
+            if turbovator == False:
+                turbovator = True
+            elif turbovator == True:
+                turbovator = False
+            print("Operator toggled turbovator")
+        #activate speed setting
+        if turbovator == False:
+            if self.operator.getRawButton(13):
+                self.elevator.move_manual(0.15)  # manual up
+            elif self.operator.getRawButton(14):
+                self.elevator.move_manual(-0.15)  # manual down
+            print("Operator set elevator speed to SLOW")
+        elif turbovator == True:
+            if self.operator.getRawButton(13):
+                self.elevator.move_manual(0.65)  # manual up but fastr
+            elif self.operator.getRawButton(14):
+                self.elevator.move_manual(-0.65)  # manual down but faster
+            print("Operator set elevator speed to FAST")
         else:
             # If no manual override, ensure motors are stopped.
-            self.elevator.move_manual(0.01)
+            self.elevator.stop()
 
         # Intake controls for Coral, Algae, and Deep Cage:
         #Coral operates on two separate functions, wrist and intake.
